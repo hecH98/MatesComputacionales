@@ -39,8 +39,6 @@ public class AutomataEquivalente {
 		else {
 			comparacionMoore(this.automata1, this.automata2);
 		}
-
-
 	}
 
 	private String[][] obtenerAutomata(String[][] automata){
@@ -58,9 +56,7 @@ public class AutomataEquivalente {
 			}
 			System.out.println();
 		}
-
 		System.out.println();
-
 		return automataTmp;
 	}
 
@@ -106,10 +102,8 @@ public class AutomataEquivalente {
 				}
 			}
 		}
-
 		System.out.println();
 		System.out.println("Los automatas son equivalentes: " + banderaEquivalentes);
-
 	}
 	private String agregarCelda(String cadena, int columna) {
 		StringTokenizer st = new StringTokenizer(cadena, ",");
@@ -140,9 +134,7 @@ public class AutomataEquivalente {
 				lenguaje[j]=automata[0][j+1];
 			}
 		}
-
 		return lenguaje;
-
 	}
 
 	private boolean checarDuplicado(String cadena, String[][]arreglo, int a, int b) {
@@ -174,7 +166,6 @@ public class AutomataEquivalente {
 				this.banderaEquivalentes=false;
 			}
 		}
-		
 	}
 
 	
@@ -289,11 +280,11 @@ public class AutomataEquivalente {
 					}
 				}
 			}
-
 			return resultado;
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		// Inputs proyecto
 		
