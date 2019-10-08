@@ -121,7 +121,6 @@ public class CYK {
 						resultado += ","+llave;
 					}
 				}
-				
 			}
 		}
 //		System.out.println(resultado);
