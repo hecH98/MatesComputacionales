@@ -78,11 +78,7 @@ public class CYK {
 		// llenar la tabla para n filas
 		for (int i = 3; i < tablaCyk.length; i++) {
 			for (int j = 0; j < tablaCyk[i].length; j++) {
-//				System.out.println("i: "+i+", j: "+j);
 				for (int k = 1; k < i; k++) {
-//					System.out.println("control k: "+k);
-//					System.out.println("metiendo a producto cruz: "+this.tablaCyk[k][j]);
-//					System.out.println("metiendo a producto cruz: "+this.tablaCyk[i-k][j+k]);
 					String combinaciones = productoCruz(this.tablaCyk[k][j],this.tablaCyk[i-k][j+k]);
 					if(tablaCyk[i][j].equals("")) {
 						if(!buscarProducciones(combinaciones).equals(""))
@@ -92,15 +88,9 @@ public class CYK {
 						if(!buscarProducciones(combinaciones).equals(""))
 						tablaCyk[i][j] += ","+buscarProducciones(combinaciones);
 					}
-//					if(!this.tablaCyk[i][j].equals("")){
-//						break;
-//					}
-//					System.out.println(this.tablaCyk[k][j]+this.tablaCyk[i-k][j+k]);
-//					System.out.println("equals: "+tablaCyk[i][j]);
 				}
 				if(tablaCyk[i][j].contains(","))
 				tablaCyk[i][j] = quitarDuplicados(tablaCyk[i][j]);
-//				System.out.println("final: "+tablaCyk[i][j]);
 			}
 		}
 	}
@@ -110,7 +100,6 @@ public class CYK {
 		String resultado = new String();
 		while(st.hasMoreElements()) {
 			String word = st.nextToken();
-//			System.out.println(word);
 			for (String llave : gramatica.keySet()) {
 				if(resultado.isEmpty()) {
 					if(gramatica.get(llave).contains(word)) {
@@ -123,7 +112,6 @@ public class CYK {
 				}
 			}
 		}
-//		System.out.println(resultado);
 		return resultado;
 	}
 	
@@ -131,25 +119,20 @@ public class CYK {
 		if(a.isEmpty() || b.isEmpty()) {
 			return new String();
 		}
-//		System.out.println(a);
-//		System.out.println(b);
 		String resultado = new String();
 		StringTokenizer stA = new StringTokenizer(a,",");
 		StringTokenizer stB = new StringTokenizer(b,",");
 		int tokensA = stA.countTokens();
 		for(int i=0; i < tokensA; i++) {
 			String palabra1 = stA.nextToken();
-//			System.out.println("tokens a: "+stA.countTokens());
 			int tokensB = stB.countTokens();
 			for(int j=0; j < tokensB; j++) {
-//				System.out.println("tokens b: "+stB.countTokens()+", j: "+j);
 				String palabra2 = stB.nextToken();
 				if(resultado.isEmpty()) {
 					resultado += palabra1+palabra2;
 				}else {
 					resultado += ","+palabra1+palabra2;
 				}
-//				System.out.println("resultado: "+resultado);
 			}
 			stB = new StringTokenizer(b,",");
 		}
@@ -158,9 +141,6 @@ public class CYK {
 	
 	public String quitarDuplicados(String s) {
 		String resultado = new String();
-//		System.out.println("entro");
-//		System.out.println(resultado);
-//		System.out.println(s);
 		Queue<String> q = new LinkedList<String>();
 		StringTokenizer st = new StringTokenizer(s,",");
 		
@@ -170,7 +150,6 @@ public class CYK {
 				q.add(token);
 			}
 		}
-//		System.out.println(q);
 		while(!q.isEmpty()) {
 			if(resultado.isEmpty()) {
 				resultado += q.remove();
@@ -178,7 +157,6 @@ public class CYK {
 				resultado += ","+q.remove();
 			}
 		}
-//		System.out.println(resultado);
 		return resultado;
 	}
 	
@@ -210,29 +188,19 @@ public class CYK {
 	}
 	
 	public String backTracking(String llave, int fila, int columna, Nodo curr) {
-//		System.out.println(llave);
-//		System.out.println(fila);
-//		System.out.println(columna);
 		int k = fila;
-//		System.out.println("arbol");
-//		imprimirArbol();
 		if(fila==1) {
 			curr.addLeft(tablaCyk[0][columna]);
-//			System.out.println(tablaCyk[0][columna]);
 			return tablaCyk[0][columna];
 		}
 		else {
 			for (int i = 1; i < fila; i++) {
 				String combinaciones = productoCruz(tablaCyk[i][columna],tablaCyk[k-i][i+columna]);
-//				System.out.println(combinaciones);
 				StringTokenizer st = new StringTokenizer(combinaciones,",");
 				int tokens = st.countTokens();
 				for (int j = 0; j < tokens; j++) {
 					String actual = st.nextToken();
 					if(gramatica.get(llave).contains(actual)) {
-//						System.out.println(actual);
-//						System.out.println(actual);
-//						System.out.println(Character.toString(s.charAt(0)));
 						curr.addLeft(Character.toString(actual.charAt(0)));
 						curr.addRight(Character.toString(actual.charAt(1)));
 						backTracking(Character.toString(actual.charAt(0)), i, columna, curr.left);
@@ -288,7 +256,7 @@ public class CYK {
 							  {"B","b"},
 							  {"C","SB"},
 							  {"D","SA"}};
-		String palabra = "aabbab";
+		String palabra = "ababaabab";
 		
 		String[][] gramatica2 = {{"S","AB","BC"},
 				        		{"A","AB","a"},
@@ -313,7 +281,7 @@ public class CYK {
         
         String palabra4 = "aaabbbcc";
         
-		new CYK(gramatica,palabra);
+		new CYK(gramatica2,palabra2);
 		
 	}
 }
