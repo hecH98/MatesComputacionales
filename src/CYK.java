@@ -184,14 +184,13 @@ public class CYK {
 		else {
 			System.out.println("La palabra \"" + palabra + "\" no se puede formar con la gramatica");
 		}
-		
 	}
 	
-	public String backTracking(String llave, int fila, int columna, Nodo curr) {
+	public void backTracking(String llave, int fila, int columna, Nodo curr) {
 		int k = fila;
-		if(fila==1) {
+		if(fila == 1) {
 			curr.addLeft(tablaCyk[0][columna]);
-			return tablaCyk[0][columna];
+			return;
 		}
 		else {
 			for (int i = 1; i < fila; i++) {
@@ -205,15 +204,11 @@ public class CYK {
 						curr.addRight(Character.toString(actual.charAt(1)));
 						backTracking(Character.toString(actual.charAt(0)), i, columna, curr.left);
 						backTracking(Character.toString(actual.charAt(1)), k-i, i+columna, curr.right);
-						return actual;
+						return;
 					}
 				}
-				
 			}
 		}
-		System.out.println();
-		
-		return new String();
 	}
 	
 	private void visualizarArbol(Nodo curr, int cont) {
@@ -225,7 +220,6 @@ public class CYK {
 			System.out.println(curr.toString());
 			visualizarArbol(curr.left, cont+1);
 		}
-		
 	}
 	
 	public void imprimirArbol() {
@@ -256,7 +250,7 @@ public class CYK {
 							  {"B","b"},
 							  {"C","SB"},
 							  {"D","SA"}};
-		String palabra = "ababaabab";
+		String palabra = "ababaababb";
 		
 		String[][] gramatica2 = {{"S","AB","BC"},
 				        		{"A","AB","a"},
@@ -281,8 +275,7 @@ public class CYK {
         
         String palabra4 = "aaabbbcc";
         
-		new CYK(gramatica2,palabra2);
-		
+		new CYK(gramatica,palabra);
 	}
 }
 
