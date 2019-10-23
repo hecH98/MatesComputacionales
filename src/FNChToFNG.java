@@ -54,13 +54,15 @@ public class FNChToFNG {
 			for (int j = 1; j < this.gramatics.get(i).size(); j++) {
 				if(this.gramatics.get(i).get(1).length() != 1) {
 					int stop = 0;
-					while(comprobacion(this.gramatics.get(i).get(0), Character.toString(this.gramaticaArray[i][1].charAt(0)))) {
-						System.out.println("cadena: "+this.gramaticaArray[i][1]);
-						String cambiado = this.gramaticaArray[i][1].substring(0, 1);
-						String temporal = this.gramaticaArray[i][1].substring(1, this.gramaticaArray[i][1].length());
+//					System.out.println(this.gramatics.get(i).get(0));
+//					System.out.println(this.gramatics.get(i).get(j));
+					while(comprobacion(this.gramatics.get(i).get(0), Character.toString(this.gramatics.get(i).get(j).charAt(0)))) {
+						System.out.println("cadena: "+this.gramatics.get(i).get(1));
+						String cambiado = this.gramatics.get(i).get(1).substring(0, 1);
+						String temporal = this.gramatics.get(i).get(1).substring(1, this.gramatics.get(i).get(1).length());
 						System.out.println("cambiado: "+cambiado);
 						System.out.println("temporal: "+temporal);
-						sustitucion(cambiado, temporal, this.gramaticaArray[i][0]);
+						sustitucion(cambiado, temporal, this.gramatics.get(i).get(0));
 						System.out.println(this.gramatica);
 						stop++;
 						if(stop == 3) {
