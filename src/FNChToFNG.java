@@ -17,7 +17,7 @@ public class FNChToFNG {
 		printGrammar(this.grammar);
 		conversionFNG();
 		this.grammar = juntarGramaticas();
-//		reducirGramatica(this.grammar);
+		reducirGramatica(this.grammar);
 		System.out.println("\nForma Normal de Greibach");
 		printGrammar(this.grammar);
 	}
