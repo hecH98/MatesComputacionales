@@ -9,7 +9,8 @@ public class FNChToFNG {
 	private int z = 0;
 
 	public FNChToFNG(String[][] gramatica) {
-		this.terminales = this.generadores = new LinkedList<>();
+		this.terminales = new LinkedList<>();
+		this.generadores = new LinkedList<>();
 		this.extras = new LinkedHashMap<>();
 		this.grammar = obtenerGramatica(gramatica);
 		System.out.println("Forma Normal de Chomsky");
