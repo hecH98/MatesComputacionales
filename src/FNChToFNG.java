@@ -17,7 +17,7 @@ public class FNChToFNG {
 		printGrammar(this.grammar);
 		conversionFNG();
 		this.grammar = juntarGramaticas();
-		reducirGramatica(this.grammar);
+//		reducirGramatica(this.grammar);
 		System.out.println("\nForma Normal de Greibach");
 		printGrammar(this.grammar);
 	}
@@ -57,12 +57,12 @@ public class FNChToFNG {
 			}
 		}
 
-		for(String key : this.grammar.keySet()) {
+		for (int i = generadores.size()-1; i >= 0 ; i--) {
+			String key = generadores.get(i);
 			for (int j = 0; j < this.grammar.get(key).size(); j++) {
 				if(!this.terminales.contains(Character.toString(this.grammar.get(key).get(j).charAt(0)))) {
 					String cambiado = this.grammar.get(key).get(j).substring(0, 1);
 					String temporal = this.grammar.get(key).get(j).substring(1, this.grammar.get(key).get(j).length());
-
 					sustitucion(cambiado, temporal, this.grammar.get(key), key, j);
 				}
 			}
@@ -275,8 +275,12 @@ public class FNChToFNG {
 				{"C","XA"},
 				{"D","XB"},
 				{"X","AX","BX","0","1"}};
+		
+		String[][] gramatica4 = {{"S", "AB"}, 
+				{"A","BS","b"},
+				{"B","SA","a"}};
 
-		new FNChToFNG(gramatica2);
+		new FNChToFNG(gramatica4);
 	}
 
 }
