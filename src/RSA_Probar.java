@@ -1,6 +1,6 @@
 import java.io.File;
 
-public class Probar_RSA {
+public class RSA_Probar {
 	public static void main(String[] args) {
 		
 		File mensajeOriginal = new File("MensajeOriginal.txt");
