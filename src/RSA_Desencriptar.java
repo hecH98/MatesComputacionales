@@ -84,10 +84,8 @@ public class RSA_Desencriptar {
 						intToString = Integer.parseInt(newChar);
 						nuevaLinea += (char) desencriptarLetra(intToString);
 						newChar = new String();
-						System.out.print(".");
 					}
 				}
-				System.out.println();
 				pw.println(nuevaLinea);
 				nuevaLinea = new String();
 			}

@@ -25,9 +25,7 @@ public class RSA_Encriptar {
 				for(int i = 0; i < linea.length(); i++) {
 					intToChar = linea.charAt(i);
 					nuevaLinea += encriptarLetra(intToChar) + " ";
-					System.out.print(".");
 				}
-				System.out.println();
 				pw.println(nuevaLinea);
 				nuevaLinea = new String();
 			}
